@@ -51,7 +51,7 @@
     <div class="row pb-5">
       <div class="col-md-11"></div>
       <div class="col-md-1">
-        <button class="btn btn-primary btn-sm" type="button" onclick="location.href='./write_form.php'">Write</button>
+        <button class="btn btn-primary" type="button" onclick="location.href='./write_form.php'">Write</button>
       </div>
     </div>
     <div class="mt-3">
@@ -124,8 +124,12 @@
 <script>
   function getForm(command){    
     if(command == 'delete'){
-      document.frm.action = "./delete.php";
-      frm.submit();
+      if(confirm("delete?")){
+        document.frm.action = "./delete.php";
+        frm.submit();
+      } else {
+        return false;
+      }
     } else if(command == 'modify'){
       document.frm.action = "./modify_form.php";
       document.frm.method = "get";
